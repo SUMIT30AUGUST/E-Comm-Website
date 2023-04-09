@@ -1,25 +1,30 @@
 import { Dialog,Box,TextField,Button, Typography,styled } from "@mui/material";
 import { useState } from "react";
 
+import { authenticateSignup } from "../../service/api";
+
 const Component = styled(Box)`
-height:60vh
+height:70vh ;
+width:90vh;
 /* width: 90vh; */
 `
 
 const Image=styled(Box)`
     background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
-    height: 83%;
-    width: 30 %;
-    padding: 25px 35px;
+    height: 100%;
+    width: 28%;
+    padding: 35px 35px;
     & > p,& > h5 {
-        color:#ffff;      
+        color:#FFFFFF;
+         font-weight:600;
     }
 `
 
 const Wrapper= styled(Box)`
    display: flex;
    flex-direction:column;
-   padding: 25px 35px;
+   padding: 35px 45px;
+   height:80%;
    flex:1;
    & > div, & > button ,& > p {
     margin-top:20px;
@@ -37,11 +42,11 @@ border-radius :3px;
 const RequestOTP=styled(Button)`
 text-transform:none;
 background:#fff ;
-color: #2874fO;
+color: #2874f0;
 height: 48px;
 cursor:pointer;
 border-radius :3px;
-box-shadow:0 2px 4px 0 rgb(0  0 0/ 20%);
+box-shadow: 0 2px 4px 0 rgb(0  0 0/ 20%);
 `
 
 const Text = styled(Typography)`
@@ -94,9 +99,17 @@ const accountInitialValue={
    }
 
    const onInputChange =(e)=>{
-       setSignup({[e.target.name]:e.target.value})
-      console.log(signup);
+                  //   object destructuring
+       setSignup({...signup,[e.target.name]:e.target.value})
+      //  console.log(signup);
       }
+
+
+      //
+   const signupUser= async ()=>{
+      //   signup becomes the payload/body here to post request
+    let response= await  authenticateSignup(signup)
+   }
 
 
     return(
@@ -127,7 +140,7 @@ const accountInitialValue={
                          <TextField variant="standard" onChange={(e) => onInputChange(e)} name="email" label="Enter email"></TextField>
                         <TextField variant="standard" onChange={(e) => onInputChange(e)} name="password" label="Enter Password"></TextField>
                         <TextField variant="standard" onChange={(e) => onInputChange(e)} name="phone" label="Enter Phone No."></TextField>
-                        <LoginButton>Login</LoginButton>
+                        <LoginButton onClick={()=>signupUser()}>Continue</LoginButton>
                         <RequestOTP> Request OTP </RequestOTP>
                         <CreateAccount>New To Flipkart? Create an account</CreateAccount>
                       </Wrapper>
