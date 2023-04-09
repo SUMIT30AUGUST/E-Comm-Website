@@ -32,13 +32,17 @@ const userSchema= new mongoose.Schema({
     lowercase:true
   },
 
-  email: {
+  password: {
     type:String,
-    require:true,
-    trim:true,
-    unique:true,
-    lowercase:true
+    required: true
   },
 
+  phone: {
+    type: String,
+    required : true
+  }
 
-})
+});
+
+const user = mongoose.model('user', userSchema)
+export default user;

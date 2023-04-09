@@ -1,6 +1,8 @@
 import { Dialog,Box,TextField,Button, Typography,styled } from "@mui/material";
-import { useState } from "react";
+import { useState,useContext } from "react";
 
+//values will come from Datacontext
+import { DataContext } from "../../context/DataProvider";
 import { authenticateSignup } from "../../service/api";
 
 const Component = styled(Box)`
@@ -89,7 +91,9 @@ const accountInitialValue={
    const [account,toggleAccount]= useState(accountInitialValue.login);
    const [signup,setSignup]= useState(signupInitialValues);
     
-    const handleClose=()=>{
+   const {setAccount}=useContext(DataContext);
+    
+   const handleClose=()=>{
         setOpen(false);
         toggleAccount(accountInitialValue.login)
      }
@@ -109,6 +113,9 @@ const accountInitialValue={
    const signupUser= async ()=>{
       //   signup becomes the payload/body here to post request
     let response= await  authenticateSignup(signup)
+    if (!response ) return;
+    handleClose();
+    setAccount(signup.firstname);
    }
 
 
