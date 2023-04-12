@@ -1,7 +1,7 @@
 import { Box,Button, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import Profile from "./Profile";
 import { useState,useContext } from "react";
 
 import { DataContext } from "../../context/DataProvider";
@@ -45,7 +45,7 @@ const openDialog=()=>{
         
         <Wrapper>
             {
-                account? <Typography>{account}</Typography>
+                account? <Profile account={account}/>
                 :
                 <LoginButton variant="contained" onClick={()=> openDialog()}> login</LoginButton>
             }
