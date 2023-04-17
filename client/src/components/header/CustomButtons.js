@@ -35,7 +35,7 @@ const Custombuttons=()=>{
    
     const [open,setOpen] = useState(false);
    
-    const {account} = useContext(DataContext);
+    const {account, setAccount} = useContext(DataContext);
 
 const openDialog=()=>{
     setOpen(true);
@@ -45,9 +45,9 @@ const openDialog=()=>{
         
         <Wrapper>
             {
-                account? <Profile account={account}/>
+                account? <Profile account={account} setAccount={setAccount}/>
                 :
-                <LoginButton variant="contained" onClick={()=> openDialog()}> login</LoginButton>
+                <LoginButton variant="contained" onClick={()=> openDialog()}>Login</LoginButton>
             }
         
           <Typography style={{width:135,marginTop:3}}>Become a Seller</Typography>
