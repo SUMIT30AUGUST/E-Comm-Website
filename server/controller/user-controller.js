@@ -30,6 +30,7 @@ export const userLogin= async (request,response)=>{
            const password = request.body.password;
 
            let user = await User.findOne({username: username, password:password})
+        //    console.log(user);
               
         if(user){   
            return response.status(200).json({data:user})
@@ -40,6 +41,7 @@ export const userLogin= async (request,response)=>{
         }
         }
     catch(error){
+        // console.log("its an errorrrrrrrrrrrrrrrrr")
     response.status(500).json('Error',error.message)
     }
 }

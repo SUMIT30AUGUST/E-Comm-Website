@@ -64,6 +64,15 @@ const CreateAccount = styled(Typography)`
       cursor:pointer;
 `
 
+const Error =styled(Typography)`
+font-size:10px;
+color : red;
+line-height: 0;
+margin-top: 10px;
+font-weight: 600;
+`
+
+
 const accountInitialValue={
    login:{
       view: 'login',
@@ -106,8 +115,9 @@ const accountInitialValue={
     
    const handleClose=()=>{
         setOpen(false);
-        toggleAccount(accountInitialValue.login)
-     }
+      toggleAccount(accountInitialValue.login)
+       showError(false)
+      } 
 
    const toggleSignup=()=>{
       toggleAccount(accountInitialValue.signup)
@@ -136,12 +146,13 @@ const accountInitialValue={
 
    const loginUser= async()=>{
       let response= await  authenticateLogin(login);
+      console.log(response);
       if(!response) 
             showError(true);
         else {
             showError(false);
             handleClose();
-            setAccount(login.username);
+            setAccount(response.data.data.firstname);
         }
    }
 
@@ -156,7 +167,10 @@ const accountInitialValue={
                {
                account.view=== 'login' ?
                     <Wrapper>
-                       <TextField variant="standard" label="Enter Email/Mobile Number" onChange={(e) => onValueChange(e)} name="username"></TextField>
+                       <TextField variant="standard" label="Enter Username" onChange={(e) => onValueChange(e)} name="username"></TextField>
+                       
+                       {/*Below error only show when user enter invalid username and password  */}
+                       {error && <Error>Please enter valid username or password</Error>}
                        <TextField variant="standard" label="Enter Password" onChange={(e) => onValueChange(e)} name="password"></TextField>
                        <Text> By continuing, you agree to Flipkart's Terms of Use and Privacy Policy</Text>
                        <LoginButton onClick={()=>loginUser()}>Login</LoginButton>
