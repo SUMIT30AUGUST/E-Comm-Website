@@ -4,6 +4,7 @@ import Header from './components/header/Header';
 import Home from './components/home/Home';
 // import NavBar from './components/home/NavBar';
 
+
 import DataProvider from './context/DataProvider';
 import { Box } from '@mui/material';
 
