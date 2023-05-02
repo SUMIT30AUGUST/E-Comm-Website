@@ -2,11 +2,13 @@ import { useEffect } from "react"
 
 import NavBar from "./NavBar"
 import Banner from "./Banner"
+import Slide from "./Slide"
 
 import {Box,styled} from '@mui/material'
 
 import { getProducts } from "../../redux/actions/productAction"
 import {useDispatch, useSelector} from 'react-redux'
+
 const Component=styled(Box)`
 padding:20px 30px;
 background:#f2f2f2;
@@ -30,6 +32,7 @@ const Home=()=> {
       <NavBar/>
     <Component>
       <Banner/>
+      <Slide products={products} />
     </Component>
    </>
   )

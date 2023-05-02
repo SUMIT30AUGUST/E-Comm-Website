@@ -6,6 +6,7 @@ import {styled} from '@mui/material'
 import { bannerData } from '../../constants/Data';
 
 
+
 const Image = styled('img')({
     width:'100%',
     height:280
