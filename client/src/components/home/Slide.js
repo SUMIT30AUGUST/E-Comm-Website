@@ -68,8 +68,8 @@ const Text= styled(Typography)`
 const Slide = ({ products,title,timer}) => {
     const timeURL = " https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg";
 
-    const render = ({ hours, minutes, seconds }) => {
-        return <Box variant="span">{hours} : {minutes} : {seconds} Left</Box>
+    const render = ({ hours, minutes, seconds },index) => {
+        return <Box  variant="span">{hours} : {minutes} : {seconds} Left</Box>
     }
     return (
         <Component>
@@ -105,8 +105,8 @@ const Slide = ({ products,title,timer}) => {
                 {
                     products.map((product, index) => (
                         //  console.log(product.url);
-                        <Box textAlign="center" style={{padding: "25px 15px"}}>
-                        <Image key={index} src={product.url} alt='product'></Image>
+                        <Box key={index} textAlign="center" style={{padding: "25px 15px"}}>
+                        <Image  src={product.url} alt='product'></Image>
                         <Text style={{fontWeight:870,color: '#212121'}}>{product.title.shortTitle}</Text>
                         <Text style={{color:'green'}}>{product.discount}</Text>
                         <Text style={{color:'black',opacity :'.6' }}>{product.tagline}</Text>

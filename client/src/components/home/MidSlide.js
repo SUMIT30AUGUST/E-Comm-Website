@@ -12,6 +12,11 @@ const LeftComponent= styled(Box)`
 
 const RightComponent= styled(Box)`
         background: white;
+        padding:5px;
+        margin-top: 10px;
+        margin-left: 10px;
+        width:17%;
+        text-align: center;
 `
 export const MidSlide =({products, title , timer})=>{
     const adURL = 'https://rukminim1.flixcart.com/flap/464/708/image/633789f7def60050.jpg?q=70';

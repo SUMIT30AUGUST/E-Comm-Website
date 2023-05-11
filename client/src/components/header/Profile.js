@@ -46,9 +46,10 @@ const Profile=({account,setAccount})=>{
         open={Boolean(open)}
         onClose={handleClose}
       >
-        <Menuu onClick={()=> {handleClose(); logoutUser();}}></Menuu>
+        <MenuItem onClick={()=> {handleClose(); logoutUser();}}>
             <PowerSettingsNewIcon color="primary" fontSize='small'/> 
             <Logout >Logouttt</Logout>
+            </MenuItem> 
         </Component>
         </>
     )
