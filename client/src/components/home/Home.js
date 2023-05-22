@@ -22,7 +22,6 @@ const Home=()=> {
   //  we get access to a state in useSelector
   // getProducts is a reducer here that is in the store.js file
    const {products}= useSelector(state => state.getProducts)
-  console.log(products);
   const dispatch =useDispatch();
 
    useEffect(()=>{
