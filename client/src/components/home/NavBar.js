@@ -6,11 +6,16 @@ import { navData } from "../../constants/Data";
 
 
 
-const Component=styled(Box)`
-display: flex;
-margin:55px 130px 0px 130px;
-justify-content: space-between;
-`
+const Component=styled(Box)(({theme})=>({
+  overflow:'overlay hidden',
+  display: 'flex',
+  margin:'55px 130px 0px 130px',
+  justifyContent: 'space-between',
+  [theme.breakpoints.down('lg')]:{
+    margin:0,
+  }
+}))
+
 const Container=styled(Box)`
    padding : 12px 8px;
   text-align:center;
