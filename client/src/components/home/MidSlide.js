@@ -4,7 +4,7 @@ import Slide from "./Slide"
 
 
 
-const  Component= styled (Box)`
+const  Component= styled(Box)`
       display: flex;
 `
 const LeftComponent= styled(Box)(({theme})=>({

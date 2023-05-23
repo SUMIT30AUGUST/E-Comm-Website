@@ -3,10 +3,10 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel'
 
 import Countdown from 'react-countdown';
+import {Link} from 'react-router-dom';
 
-import { Box, Typography ,Button,Divider} from '@mui/material';
-import styled from '@emotion/styled';
-import { green } from '@mui/material/colors';
+import { Box, Typography ,Button,Divider,styled} from '@mui/material';
+
 
 const responsive = {
 
@@ -102,17 +102,20 @@ const Slide = ({ products,title,timer}) => {
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
-                {
+
+             {
                     products.map((product, index) => (
                         //  console.log(product.url);
-                        <Box key={index} textAlign="center" style={{padding: "25px 15px"}}>
+                    <Link to={`product/${product.id}`} style={{textDecoration:'none'}}>
+                       <Box key={index} textAlign="center" style={{padding: "25px 15px"}}>
                         <Image  src={product.url} alt='product'></Image>
                         <Text style={{fontWeight:870,color: '#212121'}}>{product.title.shortTitle}</Text>
                         <Text style={{color:'green'}}>{product.discount}</Text>
                         <Text style={{color:'black',opacity :'.6' }}>{product.tagline}</Text>
                         </Box>
-                    ))
-                }
+                    </Link>
+                ))
+            }
 
             </Carousel>
         </Component>
