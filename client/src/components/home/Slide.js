@@ -3,9 +3,9 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel'
 
 import Countdown from 'react-countdown';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { Box, Typography ,Button,Divider,styled} from '@mui/material';
+import { Box, Typography, Button, Divider, styled } from '@mui/material';
 
 
 const responsive = {
@@ -47,7 +47,7 @@ const DealText = styled(Typography)`
     
 `
 
-const ViewAllButton=styled(Button)`
+const ViewAllButton = styled(Button)`
    margin-left: auto ;
     background-color:#2874f0 ;
     border-radius: 2px;
@@ -57,36 +57,36 @@ const ViewAllButton=styled(Button)`
 
 const Image = styled('img')({
     width: 'auto',
-    height:150 
+    height: 150
 })
 
-const Text= styled(Typography)`
+const Text = styled(Typography)`
   font-size: 14px;
   margin-top: 5px ;
 `
 
-const Slide = ({ products,title,timer}) => {
+const Slide = ({ products, title, timer }) => {
     const timeURL = " https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg";
 
-    const render = ({ hours, minutes, seconds },index) => {
-        return <Box  variant="span">{hours} : {minutes} : {seconds} Left</Box>
+    const render = ({ hours, minutes, seconds }, index) => {
+        return <Box variant="span">{hours} : {minutes} : {seconds} Left</Box>
     }
     return (
         <Component>
             <Deal>
                 <DealText >{title}</DealText>
-                 {
-                    timer && 
+                {
+                    timer &&
 
-                     <Timer>
-                           <img style={{ width: 24 }} src={timeURL} alt="" />
+                    <Timer>
+                        <img style={{ width: 24 }} src={timeURL} alt="" />
                         <Countdown date={Date.now() + 5.04e+7} renderer={render}></Countdown>
-                     </Timer>
-                 }
+                    </Timer>
+                }
                 <ViewAllButton variant='contained' color='primary'>View All</ViewAllButton>
             </Deal>
             {/*  used for drawing the line */}
-            <Divider/>  
+            <Divider />
             <Carousel
                 responsive={responsive}
                 swipeable={false}
@@ -103,19 +103,19 @@ const Slide = ({ products,title,timer}) => {
                 itemClass="carousel-item-padding-40-px"
             >
 
-             {
+                {
                     products.map((product, index) => (
                         //  console.log(product.url);
-                    <Link to={`product/${product.id}`} style={{textDecoration:'none'}}>
-                       <Box key={index} textAlign="center" style={{padding: "25px 15px"}}>
-                        <Image  src={product.url} alt='product'></Image>
-                        <Text style={{fontWeight:870,color: '#212121'}}>{product.title.shortTitle}</Text>
-                        <Text style={{color:'green'}}>{product.discount}</Text>
-                        <Text style={{color:'black',opacity :'.6' }}>{product.tagline}</Text>
-                        </Box>
-                    </Link>
-                ))
-            }
+                        <Link key={index} to={`product/${product.id}`} style={{ textDecoration: 'none' }}>
+                            <Box textAlign="center" style={{ padding: "25px 15px" }}>
+                                <Image src={product.url} alt='product'></Image>
+                                <Text style={{ fontWeight: 870, color: '#212121' }}>{product.title.shortTitle}</Text>
+                                <Text style={{ color: 'green' }}>{product.discount}</Text>
+                                <Text style={{ color: 'black', opacity: '.6' }}>{product.tagline}</Text>
+                            </Box>
+                        </Link>
+                    ))
+                }
 
             </Carousel>
         </Component>

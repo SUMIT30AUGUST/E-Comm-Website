@@ -1,13 +1,14 @@
-import {createStore, combineReducers,applyMiddleware} from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 //to pass the middleware in the dev tools,we have to use applymiddleware
 
 import thunk from 'redux-thunk'
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {getProductsReducer} from './reducers/productreducer'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { getProductDetailsReducer, getProductsReducer } from './reducers/productreducer'
 
 
-const reducer= combineReducers({
-    getProducts : getProductsReducer
+const reducer = combineReducers({
+    getProducts: getProductsReducer,
+    getProductDetails: getProductDetailsReducer
 })
 
 const middleware = [thunk];

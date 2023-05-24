@@ -46,14 +46,14 @@ const Profile=({account,setAccount})=>{
         open={Boolean(open)}
         onClose={handleClose}
       >
-        <MenuItem onClick={()=> {handleClose(); logoutUser();}}>
+        <Menuu onClick={()=> {handleClose(); logoutUser();}}>
             <PowerSettingsNewIcon color="primary" fontSize='small'/> 
             <Logout >Logouttt</Logout>
-            </MenuItem> 
+            </Menuu> 
         </Component>
         </>
     )
-}
+} 
 
 
-export default Profile;
+export default Profile; 
