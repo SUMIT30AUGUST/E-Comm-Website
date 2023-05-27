@@ -1,8 +1,8 @@
-// import logo from './logo.svg';
+
 import './App.css';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
-// import NavBar from './components/home/NavBar';
+
 
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import DataProvider from './context/DataProvider';

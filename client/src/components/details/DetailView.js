@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 
 import { getProductDetails } from "../../redux/actions/productAction";
 
-import {Box, Typography,Grid,styled} from '@mui/material'
+import {Box,Grid,styled} from '@mui/material'
+import ProductDetail from "./ProductDetail";
 
 const Component =styled(Box)`
    background: #f2f2f2 ;
@@ -16,10 +17,17 @@ const Component =styled(Box)`
 `
 
 
-const Container = styled(Grid)`
-    background: #ffffff;
-    display: flex;
-`
+const Container = styled(Grid)(({ theme})=>({
+
+  background: '#ffffff',
+  display: 'flex',
+  [theme.breakpoints.down('md')]:{
+    margin:0
+  }
+}))
+
+
+
 const RightContainer = styled(Grid)`
    margin-top: 50px;
    padding-left: 45px;
@@ -51,13 +59,7 @@ const DetailView = () => {
                        </Grid>
                       
                       <RightContainer  item lg={8} md={8} sm={8} xs={12}>
-                        <Typography>{product.title.longTitle}</Typography>
-                        <Typography style={{margin: 5, color:'#878787'}}>8 Ratings & 1 Review </Typography>
-                        <Typography>
-                          <Box component="span" style={{fontSize:28}}>₹{product.price.cost}</Box>&nbsp;
-                          <Box component="span" style={{color:'#878787'}}><strike>₹{product.price.mrp}</strike></Box>&nbsp;  
-                          <Box component="span" style={{color:'dark-green'}}>{product.price.discount} off</Box>  
-                        </Typography>
+                        <ProductDetail product={product}/>
                       </RightContainer>
                   </Container>
             }
