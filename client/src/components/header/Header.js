@@ -1,10 +1,11 @@
+import { useState } from "react";
 
-
-import { AppBar, Toolbar, styled, Box, Typography } from "@mui/material";
+import {List,ListItemButton, AppBar,Drawer, Toolbar, styled, Box, Typography, IconButton} from "@mui/material";
 import { Link } from "react-router-dom";
 
+import {Menu }from '@mui/icons-material';
 import Search from "./Search";
-import Custombuttons from "./CustomButtons";
+import CustomButtons from "./CustomButtons";
 
 
 
@@ -26,17 +27,55 @@ const SubHeading = styled(Typography)`
 
 
 const CustomButtonwrapper = styled(Box)(({theme})=>({
-     margin: '0 % 0 auto',
+     margin: '0 5% 0 auto',
      [theme.breakpoints.down('md')]:{
         display:'none'
      }
 }));
 
+const MenuButton = styled(IconButton)(({ theme }) => ({
+    display: 'none',
+    [theme.breakpoints.down('md')]: {
+        display: 'block',
+        color:'white'
+    }
+}));
 
 const Header = () => {
-    return (<>
+   
+    const [open,setOpen]=useState(false);
+  
+    const handleOpen=()=>{
+         setOpen(true) 
+    }
+   
+    const handleClose=()=>{
+          setOpen(false)
+    }
+
+    const list = ()=>{
+        <Box style={{width:200}} onClick={handleClose}>
+            <List>
+                <ListItemButton>
+                    <CustomButtons/>
+                </ListItemButton>
+            </List>
+        </Box>
+    };
+
+    return (
+    <>
         <StyledHeader>
             <Toolbar style={{ minHeight: 55 }}>
+                
+                <MenuButton onClick={handleOpen}>
+                   <Menu/>
+                </MenuButton>
+                
+                <Drawer open={open} onClose={handleClose} >
+                    {list()}
+                </Drawer>
+
                 <Component to="/"> 
                     <Box style={{ display: 'flex' }}>
                         <Box style={{ fontSize:"38px", fontStyle:"italic",marginTop:"4px", fontWeight: 'bold' }}>Rawat's&nbsp;Store&nbsp;</Box>
@@ -48,7 +87,7 @@ const Header = () => {
              
                 <Search />
                 <CustomButtonwrapper>
-                    <Custombuttons />
+                    <CustomButtons />
                 </CustomButtonwrapper>
             </Toolbar>
         </StyledHeader>
